@@ -44,7 +44,7 @@ class DiagnosisCode(models.Model):
     abbreviated_description = models.CharField(max_length=255)
     full_description = models.TextField()
     
-    # Version - CRITICAL for multi-version support
+    # Version - for multi-version support
     icd_version = models.CharField(max_length=10, db_index=True)  # "ICD-9", "ICD-10", "ICD-11"
     
     # Status tracking

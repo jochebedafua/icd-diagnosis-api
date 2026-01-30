@@ -3,7 +3,9 @@ from .models import DiagnosisCategory, DiagnosisCode
 
 
 class DiagnosisCategorySerializer(serializers.ModelSerializer):
-    """Serializer for DiagnosisCategory model"""
+    """
+    Serializer for DiagnosisCategory model
+    """
     class Meta:
         model = DiagnosisCategory
         fields = [
@@ -18,7 +20,9 @@ class DiagnosisCategorySerializer(serializers.ModelSerializer):
 
 
 class DiagnosisCodeSerializer(serializers.ModelSerializer):
-    """Full serializer for DiagnosisCode - used for detail views and create/update"""
+    """
+    Full serializer for DiagnosisCode - used for detail views and create/update
+    """
     category_details = DiagnosisCategorySerializer(source='category', read_only=True)
     
     class Meta:
@@ -26,7 +30,7 @@ class DiagnosisCodeSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'category',              # ID for POST/PUT (write)
-            'category_details',      # Full object for GET (read)
+            'category_details',      
             'diagnosis_code',
             'full_code',
             'abbreviated_description',
@@ -58,7 +62,9 @@ class DiagnosisCodeSerializer(serializers.ModelSerializer):
 
 
 class DiagnosisCodeListSerializer(serializers.ModelSerializer):
-    """Lightweight serializer for list views"""
+    """
+    Lightweight serializer for list views
+    """
     category_code = serializers.CharField(source='category.code', read_only=True)
     
     class Meta:
